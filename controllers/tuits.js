@@ -1,17 +1,17 @@
 export default [
   {
     id: "1",
-    text: "Tuit 1",
+    text: "100s of Starships land on Mars",
     editing: false,
   },
   {
     id: "2",
-    text: "Tuit 2",
+    text: "Cybertrucks driving up Mar's Olympus Mons",
     editing: true,
   },
   {
     id: "3",
-    text: "Tuit 3",
+    text: "Cybertruck picks up famous Martian rover Curiosity",
     editing: false,
   },
   {

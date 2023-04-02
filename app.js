@@ -1,11 +1,18 @@
 import express from "express";
 import MathController from "./controllers/math-controller.js";
 import TuitController from "./controllers/tuit-controller.js";
+import UsersController from "./controllers/users/users-controller.js";
 import cors from "cors";
+import mongoose from "mongoose";
+import { findAllTuits } from "./db/tuiter/tuits/tuits-dao.js";
+mongoose.connect("mongodb://127.0.0.1:27017/tuiter");
 const app = express();
 app.use(cors());
+
+app.use(express.json());
 const port = 4000;
 
+UsersController(app);
 MathController(app);
 TuitController(app);
 
