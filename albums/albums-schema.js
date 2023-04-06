@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const albumSchema = new mongoose.Schema(
   {
     name: String,
-    napsterId: String,
+    albumId: String,
   },
   { collection: "albums" }
 );

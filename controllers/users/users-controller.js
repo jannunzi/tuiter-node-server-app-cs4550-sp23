@@ -1,7 +1,7 @@
 import users from "./users.js";
 import * as dao from "../../users/users-dao.js";
 
-let currentUser = null;
+// let currentUser = null;
 
 const UsersController = (app) => {
   const findAllUsers = async (req, res) => {
@@ -37,17 +37,19 @@ const UsersController = (app) => {
     const user = await dao.findUserByCredentials(req.body);
     // users.find((user) => user.username === req.body.username);
     if (user) {
-      currentUser = user;
+      req.session["currentUser"] = user;
       res.json(user);
     } else {
       res.sendStatus(401);
     }
   };
   const logout = async (req, res) => {
-    currentUser = null;
+    req.session.destroy();
+    // currentUser = null;
     res.sendStatus(200);
   };
   const profile = async (req, res) => {
+    const currentUser = req.session["currentUser"];
     if (!currentUser) {
       res.sendStatus(404);
       return;
@@ -63,7 +65,7 @@ const UsersController = (app) => {
       return;
     }
     const newUser = await dao.createUser(user);
-    currentUser = newUser;
+    req.session.currentUser = newUser;
     res.json(newUser);
   };
 
