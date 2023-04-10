@@ -3,6 +3,7 @@ import MathController from "./controllers/math-controller.js";
 import TuitController from "./controllers/tuit-controller.js";
 import UsersController from "./controllers/users/users-controller.js";
 import AlbumsController from "./albums/albums-controller.js";
+import FollowsController from "./follows/follows-controller.js";
 import session from "express-session";
 import cors from "cors";
 import mongoose from "mongoose";
@@ -30,6 +31,7 @@ UsersController(app);
 MathController(app);
 TuitController(app);
 AlbumsController(app);
+FollowsController(app);
 
 const welcome = (req, res) => {
   res.send("Welcome to Node.js!");
